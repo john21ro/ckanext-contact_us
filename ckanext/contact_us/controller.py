@@ -35,7 +35,7 @@ class ContactUsController(BaseController):
             if errors == {} :
                 try:
                     # emails = config.get('contact_us.email') 
-                    emails = ['john21ro@yahoo.com,datagovro@gmail.com'] 
+                    emails = ['john21ro@yahoo.com','datagovro@gmail.com'] 
                     for v in emails.split(','): ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',data.get('contact_us.message'))
                     h.flash_success(_('Email sent'))
                     data = {}
