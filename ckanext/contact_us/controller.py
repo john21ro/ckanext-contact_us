@@ -36,7 +36,8 @@ class ContactUsController(BaseController):
             
             if errors == {} :
                 try:
-                    message_text = "<b>Topic</b>: " + data.get('contact_us.category') + "\n" + data.get('contact_us.message')
+                    message_text = "Topic: " + data.get('contact_us.category') + "\nEmail: " + data.get(
+                        'contact_us.email') + "\n\n" + data.get('contact_us.message')
                     # emails = config.get('contact_us.email') 
                     emails = "john21ro@yahoo.com,datagovro@gmail.com"
                     for v in emails.split(',') :
