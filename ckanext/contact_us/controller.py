@@ -27,6 +27,8 @@ class ContactUsController(BaseController):
                 errors['contact_us.name'] = [_('Missing value')]
             if not data.get('contact_us.email') :
                 errors['contact_us.email'] = [_('Missing value')]
+            if not data.get('contact_us.category') :
+                errors['contact_us.category'] = [_('Missing value')]
             elif not validate_email(data.get('contact_us.email')):
                 errors['contact_us.email'] = [_('Invalid email')]
             if not data.get('contact_us.message') :
@@ -34,10 +36,11 @@ class ContactUsController(BaseController):
             
             if errors == {} :
                 try:
+                    message_text = "<b>Topic</b>: " + data.get('contact_us.category') + "\n" + data.get('contact_us.message')
                     # emails = config.get('contact_us.email') 
                     emails = "john21ro@yahoo.com,datagovro@gmail.com"
                     for v in emails.split(',') :
-                        ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',data.get('contact_us.message'))
+                        ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',message_text)
                     h.flash_success(_('Email sent'))
                     data = {}
                 except ckan.lib.mailer.MailerException:
