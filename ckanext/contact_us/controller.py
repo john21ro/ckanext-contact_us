@@ -1,6 +1,7 @@
 import ckan.lib.base as base
 import ckan.lib.helpers as h
 import ckan.plugins as p
+import ckan.lib.captcha as captcha
 import ckan.plugins.toolkit as tk
 from ckan.lib.base import BaseController, config
 import jinja2
@@ -13,6 +14,7 @@ render = base.render
 class ContactUsController(BaseController):
     def index(self, context=None):
         c = p.toolkit.c
+        public_key = g.recaptcha_publickey
         data = request.params or {}
         errors = {}
         error_summary = {}
@@ -21,6 +23,11 @@ class ContactUsController(BaseController):
         
         if not data == {} :
             import ckan.lib.mailer
+            try:
+                captcha.check_recaptcha(request)
+            except captcha.CaptchaError:
+                # error_msg = _(u'Bad Captcha. Please try again.')
+                errors['g-recaptcha-response'] = [_('Bad Captcha. Please try again.')]
             if data.get('contact_us.nochange') != 'http://' :
                 errors['contact_us.nochange'] = [_('The value was edited')]
             if not data.get('contact_us.name') :
