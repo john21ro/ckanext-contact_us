@@ -36,7 +36,8 @@ class ContactUsController(BaseController):
                 try:
                     # emails = config.get('contact_us.email') 
                     emails = "john21ro@yahoo.com,datagovro@gmail.com"
-                    for v in emails.split(','): ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',data.get('contact_us.message'))
+                    for v in emails.split(',') :
+                        ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',data.get('contact_us.message'))
                     h.flash_success(_('Email sent'))
                     data = {}
                 except ckan.lib.mailer.MailerException:
@@ -44,4 +45,4 @@ class ContactUsController(BaseController):
         #error_summary = errors
         vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
         return render('ckanext/contact_us/index.html', extra_vars=vars)
-    
+

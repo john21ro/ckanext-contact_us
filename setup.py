@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '0.2'
 
 setup(
 	name='ckanext-contact_us',
@@ -11,9 +11,9 @@ setup(
 	""",
 	classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
 	keywords='',
-	author='Kenny Dorman',
-	author_email='kdorman@quatral.com',
-	url='http://quatral.com',
+	author='Ionel David',
+	author_email='john21ro@gmail.com',
+	url='https://data.gov.ro',
 	license='',
 	packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
 	namespace_packages=['ckanext', 'ckanext.contact_us'],

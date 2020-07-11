@@ -9,43 +9,45 @@
 <section class="module module-narrow module-shallow">
     <h2 class="module-heading"><i class="icon-medium icon-info-sign"></i></h2>
     <div class="module-content">
-		<p>
-			{{_('Use this form to obtain information and send us your comments about the open data portal. We will redirect your message to the appropriate resources. All fields are required.')}}
-		</p>
-		<p>
-			{{_('We will answer your email within 48 business hours.')}}
-		</p>
-	</div>
+        <p>
+            {{_('Use this form to obtain information and send us your comments about the open data portal. We will redirect your message to the appropriate resources. All fields are required.')}}
+        </p>
+        <p>
+            {{_('We will answer your email within 48 business hours.')}}
+        </p>
+    </div>
 </section>
 {% endblock %}
 
 {% block primary_content %}
 <article class="module">
     <div class="module-content">
-    	<h2>{{ _('Contact Us') }}</h2>
-		<p>*{{ _('All fields are required') }}</p>
-		{% set form_info = [
-		    {'name': 'contact_us.name', 'control': 'input', 'label': _('Your name')+' *', 'placeholder': _('eg. Joe Bloggs')},
-		    {'name': 'contact_us.email', 'control': 'input', 'label': _('Your email')+' *', 'placeholder': _('eg. joe@example.com')},
-		    {'name': 'contact_us.message', 'control': 'textarea', 'label': _('Your Message')+' *', 'placeholder': _('Hi, My message is ...')}
-		] %}
-		
-		<form enctype="multipart/form-data" method="post" action="">
-		{% import 'macros/autoform.html' as autoform %}
-		{% import 'macros/form.html' as form %}
-		{{ form.errors(error_summary) }}
-		{{ autoform.generate(form_info, data, errors) }}
-		<div class="control-group control-medium controls-text">
-		    <label class="control-label" for="field-contact-us-nochange">Do not change *</label>
-		    <div class="controls ">
-		    	<input id="field-contact-us-nochange" type="text" name="contact_us.nochange" value="http://">
-		    </div>
-		</div>
-		<input type="submit" name="" value="{{ _('Submit') }}">
-		</form>
-		
-		{{c.msg}}
-	</div>
-	<style>.controls-text{visibility:hidden;height:10px;}</style>
+        <h2>{{ _('Contact Us') }}</h2>
+        <p>*{{ _('All fields are required') }}</p>
+        {% set form_info = [
+            {'name': 'contact_us.name', 'control': 'input', 'label': _('Your name')+' *', 'placeholder': _('eg. Joe Bloggs')},
+            {'name': 'contact_us.email', 'control': 'input', 'label': _('Your email')+' *', 'placeholder': _('eg. joe@example.com')},
+            {'name': 'contact_us.subject', 'control': 'select', 'label': _('Subject')+' *', 'options': [{'name':2010, 'value': 2010},{'name': 2011, 'value': 2011}]},
+            {'name': 'contact_us.message', 'control': 'textarea', 'label': _('Your Message')+' *', 'placeholder': _('Hi, My message is ...')}
+        ] %}
+        <!-- {{ form.select('year', label=_('Year'), options=[{'name':2010, 'value': 2010},{'name': 2011, 'value': 2011}], selected=2011, error=errors.year) }} -->
+        <form enctype="multipart/form-data" method="post" action="">
+        {% import 'macros/autoform.html' as autoform %}
+        {% import 'macros/form.html' as form %}
+        {{ form.errors(error_summary) }}
+        {{ autoform.generate(form_info, data, errors) }}
+        {{ form.select('year', label=_('Year'), options=[{'name':2010, 'value': 2010},{'name': 2011, 'value': 2011}], selected=2011, error=errors.year) }}
+        <div class="control-group control-medium controls-text">
+            <label class="control-label" for="field-contact-us-nochange">Do not change *</label>
+            <div class="controls ">
+                <input id="field-contact-us-nochange" type="text" name="contact_us.nochange" value="http://">
+            </div>
+        </div>
+        <input type="submit" name="" value="{{ _('Submit') }}">
+        </form>
+        
+        {{c.msg}}
+    </div>
+    <style>.controls-text{visibility:hidden;height:10px;}</style>
 </article>
 {% endblock %}

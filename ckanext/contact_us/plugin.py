@@ -8,7 +8,6 @@ class ContactUsPlugin(p.SingletonPlugin):
     p.implements(p.IConfigurer, inherit=True)
 
 
-    
     def update_config(self, config):
 
         # Add this plugin's templates dir to CKAN's extra_template_paths, so
@@ -16,12 +15,10 @@ class ContactUsPlugin(p.SingletonPlugin):
         # 'templates' is the path to the templates dir, relative to this
         # plugin.py file.
         toolkit.add_template_directory(config, 'templates')
-        
+
+
     def before_map(self, map):
         map.connect('contact-us', '/contact-us',
             controller='ckanext.contact_us.controller:ContactUsController',
             action='index')
         return map  
- 
-        
-          
