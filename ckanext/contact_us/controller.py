@@ -47,6 +47,6 @@ class ContactUsController(BaseController):
                 except ckan.lib.mailer.MailerException:
                     raise
         #error_summary = errors
-        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary, 'public_key' : g.recaptcha_publickey}
         return render('ckanext/contact_us/index.html', extra_vars=vars)
 
