@@ -1,4 +1,5 @@
 {% extends "page.html" %}
+{% set public_key = g.recaptcha_publickey %}
 {% block subtitle %}{{ _('Contact us') }}{% endblock %}
 {% block breadcrumb_content %}
   <li class="active"><a href="#">{{ _('Contact Us') }}</a></li>
