@@ -18,18 +18,21 @@ class ContactUsController(BaseController):
         data = request.params or {}
         errors = {}
         error_summary = {}
-        print data
-        print config.get('email_to');
+        # print data
+        # print config.get('email_to');
         
         if not data == {} :
             import ckan.lib.mailer
             try:
                 captcha.check_recaptcha(request)
+                print data.get('g-recaptcha-response')
             except captcha.CaptchaError:
                 # error_msg = _(u'Bad Captcha. Please try again.')
                 errors['g-recaptcha-response'] = [_('Bad Captcha. Please try again.')]
             if data.get('contact_us.nochange') != 'http://' :
                 errors['contact_us.nochange'] = [_('The value was edited')]
+            if not data.get('g-recaptcha-response') :
+                errors['g-recaptcha-response'] = [_('Missing captcha value')]
             if not data.get('contact_us.name') :
                 errors['contact_us.name'] = [_('Missing value')]
             if not data.get('contact_us.email') :
