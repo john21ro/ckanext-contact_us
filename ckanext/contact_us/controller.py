@@ -6,6 +6,7 @@ import ckan.plugins.toolkit as tk
 from ckan.lib.base import BaseController, config
 import jinja2
 from ckan.common import _, c, g, request
+import ckan.lib.mailer
 from validate_email import validate_email
 
 abort = base.abort
@@ -22,10 +23,9 @@ class ContactUsController(BaseController):
         # print config.get('email_to');
         
         if not data == {} :
-            import ckan.lib.mailer
             try:
-                captcha.check_recaptcha(request)
-                print data.get('g-recaptcha-response')
+                captcha.check_recaptcha(data.get('g-recaptcha-response'))
+                # print data.get('g-recaptcha-response')
             except captcha.CaptchaError:
                 # error_msg = _(u'Bad Captcha. Please try again.')
                 errors['g-recaptcha-response'] = [_('Bad Captcha. Please try again.')]
