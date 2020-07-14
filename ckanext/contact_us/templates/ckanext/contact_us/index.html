@@ -71,12 +71,12 @@
                                 style="width: 250px; height: 80px; border: 1px solid #c1c1c1;	margin: 0; padding: 0; resize: none;"
                                 class="g-recaptcha-response"></textarea>
                         </div>
-                        {% if errors['g-recaptcha-response'] %}
-                        <span class="error-block">{{ errors['g-recaptcha-response'] }}</span>
-                        {% endif %}
                     </div>
                 </noscript>
             </div>
+            {% if errors['g-recaptcha-response'] %}
+            <span class="error-block">{{ errors['g-recaptcha-response'] }}</span>
+            {% endif %}
         </div>
         {% endif %}
 

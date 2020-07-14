@@ -33,7 +33,7 @@ class ContactUsController(BaseController):
                 errors['contact_us.nochange'] = [_('The value was edited')]
             if not data.get('g-recaptcha-response') :
                 errors['g-recaptcha-response'] = [_('Missing captcha value')]
-                print errors['g-recaptcha-response']
+                # print errors['g-recaptcha-response']
             if not data.get('contact_us.name') :
                 errors['contact_us.name'] = [_('Missing value')]
             if not data.get('contact_us.email') :
