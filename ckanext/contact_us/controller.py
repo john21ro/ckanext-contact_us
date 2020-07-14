@@ -50,7 +50,7 @@ class ContactUsController(BaseController):
                     message_text = "Topic: " + data.get('contact_us.category') + "\nEmail: " + data.get(
                         'contact_us.email') + "\n\n" + data.get('contact_us.message')
                     # emails = config.get('contact_us.email') 
-                    emails = "john21ro@yahoo.com,datagovro@gmail.com"
+                    emails = "john21ro@yahoo.com,datagovro@gmail.com,online@gov.ro"
                     for v in emails.split(',') :
                         ckan.lib.mailer._mail_recipient('Admin',v,data.get('contact_us.name'),data.get('contact_us.email'),'Contact form',message_text)
                     h.flash_success(_('Email sent'))

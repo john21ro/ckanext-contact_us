@@ -11,11 +11,10 @@
     <h2 class="module-heading"><i class="icon-medium icon-info-sign"></i></h2>
     <div class="module-content">
         <p>
-            Utilizați acest formular pentru a obține informații și a ne trimite comentariile dvs. despre portalul de date deschise.
-            Toate campurile sunt obligatorii.
+            {{_('Use this form to obtain information and send us your comments about the open data portal. We will redirect your message to the appropriate resources. All fields are required.')}}
         </p>
         <p>
-            Vă vom răspunde la e-mail în 48 de ore lucrătoare.
+            {{_('We will answer your email within 48 business hours.')}}
         </p>
     </div>
 </section>
@@ -24,8 +23,8 @@
 {% block primary_content %}
 <article class="module">
     <div class="module-content">
-        <h2>CONTACT</h2>
-        <p>*Toate campurile sunt obligatorii</p>
+        <h2>{{ _('Contact Us') }}</h2>
+        <p>*{{ _('All fields are required') }}</p>
         {% set categories = [
                 {'name': 'Puneti o intrebare', 'value': 'Puneti o intrebare'},
                 {'name': 'Transmiteți feedback', 'value': 'Transmiteți feedback'},
