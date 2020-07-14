@@ -23,12 +23,12 @@ class ContactUsController(BaseController):
         # print config.get('email_to');
         
         if not data == {} :
-            try:
-                captcha.check_recaptcha(data.get('g-recaptcha-response'))
-                # print data.get('g-recaptcha-response')
-            except captcha.CaptchaError:
-                # error_msg = _(u'Bad Captcha. Please try again.')
-                errors['g-recaptcha-response'] = [_('Bad Captcha. Please try again.')]
+            # try:
+            #     captcha.check_recaptcha(request)
+            #     # print data.get('g-recaptcha-response')
+            # except captcha.CaptchaError:
+            #     # error_msg = _(u'Bad Captcha. Please try again.')
+            #     errors['g-recaptcha-response'] = [_('Bad Captcha. Please try again.')]
             if data.get('contact_us.nochange') != 'http://' :
                 errors['contact_us.nochange'] = [_('The value was edited')]
             if not data.get('g-recaptcha-response') :
