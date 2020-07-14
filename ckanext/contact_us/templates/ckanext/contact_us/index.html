@@ -2,7 +2,7 @@
 {% set public_key = "6Lc7paMZAAAAADPEmTqxvq3uy0HurnnNXVe2uSyG" %}
 {% block subtitle %}{{ _('Contact us') }}{% endblock %}
 {% block breadcrumb_content %}
-  <li class="active"><a href="#">{{ _('Contact Us') }}</a></li>
+  <li class="active"><a href="#">Formular Contact</a></li>
 {% endblock %}
 
 
@@ -35,10 +35,10 @@
                 {'name': 'Altele', 'value': 'Altele'}
         ] %}
         {% set form_info = [
-            {'name': 'contact_us.name', 'control': 'input', 'label': _('Your name')+' *', 'placeholder': _('eg. Joe Bloggs')},
-            {'name': 'contact_us.email', 'control': 'input', 'label': _('Your email')+' *', 'placeholder': _('eg. joe@example.com')},
-            {'name': 'contact_us.category', 'control': 'select', 'label': _('Category')+' *', 'options': categories , 'selected': 'Puneti o intrebare'},
-            {'name': 'contact_us.message', 'control': 'textarea', 'label': _('Your Message')+' *', 'placeholder': _('Hi, My message is ...')}
+            {'name': 'contact_us.name', 'control': 'input', 'label': 'Nume *', 'placeholder': _('eg. Joe Bloggs')},
+            {'name': 'contact_us.email', 'control': 'input', 'label': 'Email *', 'placeholder': _('eg. joe@example.com')},
+            {'name': 'contact_us.category', 'control': 'select', 'label': 'Categorie solicitare *', 'options': categories , 'selected': 'Puneti o intrebare'},
+            {'name': 'contact_us.message', 'control': 'textarea', 'label': 'Mesaj *', 'placeholder': 'Buna ziua, Mesajul este...'}
         ] %}
         <form enctype="multipart/form-data" method="post" action="">
         {% import 'macros/autoform.html' as autoform %}
