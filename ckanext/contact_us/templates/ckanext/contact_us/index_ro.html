@@ -2,7 +2,7 @@
 {% set public_key = "6Lc7paMZAAAAADPEmTqxvq3uy0HurnnNXVe2uSyG" %}
 {% block subtitle %}{{ _('Contact us') }}{% endblock %}
 {% block breadcrumb_content %}
-  <li class="active"><a href="#">{{ _('Contact Us') }}</a></li>
+  <li class="active"><a href="#">Formular Contact</a></li>
 {% endblock %}
 
 
@@ -11,10 +11,11 @@
     <h2 class="module-heading"><i class="icon-medium icon-info-sign"></i></h2>
     <div class="module-content">
         <p>
-            {{_('Use this form to obtain information and send us your comments about the open data portal. We will redirect your message to the appropriate resources. All fields are required.')}}
+            Utilizați acest formular pentru a obține informații și a ne trimite comentariile dvs. despre portalul de date deschise.
+            Toate campurile sunt obligatorii.
         </p>
         <p>
-            {{_('We will answer your email within 48 business hours.')}}
+            Vă vom răspunde la e-mail în 48 de ore lucrătoare.
         </p>
     </div>
 </section>
@@ -23,8 +24,8 @@
 {% block primary_content %}
 <article class="module">
     <div class="module-content">
-        <h2>{{ _('Contact Us') }}</h2>
-        <p>*{{ _('All fields are required') }}</p>
+        <h2>CONTACT</h2>
+        <p>*Toate campurile sunt obligatorii</p>
         {% set categories = [
                 {'name': 'Puneti o intrebare', 'value': 'Puneti o intrebare'},
                 {'name': 'Transmiteți feedback', 'value': 'Transmiteți feedback'},
@@ -34,10 +35,10 @@
                 {'name': 'Altele', 'value': 'Altele'}
         ] %}
         {% set form_info = [
-            {'name': 'contact_us.name', 'control': 'input', 'label': _('Your name')+' *', 'placeholder': _('eg. Joe Bloggs')},
-            {'name': 'contact_us.email', 'control': 'input', 'label': _('Your email')+' *', 'placeholder': _('eg. joe@example.com')},
-            {'name': 'contact_us.category', 'control': 'select', 'label': _('Category')+' *', 'options': categories , 'selected': 'Puneti o intrebare'},
-            {'name': 'contact_us.message', 'control': 'textarea', 'label': _('Your Message')+' *', 'placeholder': _('Hi, My message is ...')}
+            {'name': 'contact_us.name', 'control': 'input', 'label': 'Nume *', 'placeholder': _('eg. Joe Bloggs')},
+            {'name': 'contact_us.email', 'control': 'input', 'label': 'Email *', 'placeholder': _('eg. joe@example.com')},
+            {'name': 'contact_us.category', 'control': 'select', 'label': 'Categorie solicitare *', 'options': categories , 'selected': 'Puneti o intrebare'},
+            {'name': 'contact_us.message', 'control': 'textarea', 'label': 'Mesaj *', 'placeholder': 'Buna ziua, Mesajul este...'}
         ] %}
         <form enctype="multipart/form-data" method="post" action="">
         {% import 'macros/autoform.html' as autoform %}
@@ -70,12 +71,12 @@
                                 style="width: 250px; height: 80px; border: 1px solid #c1c1c1;	margin: 0; padding: 0; resize: none;"
                                 class="g-recaptcha-response"></textarea>
                         </div>
-                        {% if errors['g-recaptcha-response'] %}
-                        <span class="error-block">{{ errors['g-recaptcha-response'] }}</span>
-                        {% endif %}
                     </div>
                 </noscript>
             </div>
+            {% if errors['g-recaptcha-response'] %}
+            <span class="error-block">{{ errors['g-recaptcha-response'] }}</span>
+            {% endif %}
         </div>
         {% endif %}
 
